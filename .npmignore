@@ -1,0 +1,11 @@
+.git
+src
+tests
+examples
+
+.editorconfig
+.eslintignore
+.eslintrc.json
+.gitignore
+prettier.config.js
+tsconfig.json
