@@ -7,7 +7,7 @@ export interface Translate {
   to: Language;
 }
 
-export default async function translate(
+export async function translate(
   text: string,
   languages: Translate,
 ): Promise<string> {
