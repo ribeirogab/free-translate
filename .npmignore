@@ -1,5 +1,5 @@
 .git
-src
+.vscode
 tests
 examples
 
