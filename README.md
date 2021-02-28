@@ -1,3 +1,8 @@
+<h1 align="center">
+<img src="https://i.ibb.co/T0myfBQ/logo.png" alt="jikan node.js" width="250"/>
+</h1>
+
+
 # free translate
 
 > 🈂️ ⠀free text translator in Node.js.
