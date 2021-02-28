@@ -1,8 +1,8 @@
 import * as puppeteer from 'puppeteer';
 
-import { Language } from './interfaces/Language';
+import { Language } from './types/Language';
 
-interface Translate {
+export interface Translate {
   from: Language;
   to: Language;
 }
