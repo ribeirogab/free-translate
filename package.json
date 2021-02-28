@@ -1,6 +1,6 @@
 {
   "name": "free-translate",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "main": "index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/ribeirogab/free-translate.git",
