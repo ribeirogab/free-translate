@@ -3,7 +3,7 @@
 </h1>
 
 
-# A free and unlimited translate for Node.js.
+# A free and unlimited translate for Node.js
 
 > 🈂️ ⠀free text translator in Node.js.
 
