@@ -1,19 +1,24 @@
 {
   "name": "free-translate",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/ribeirogab/free-translate.git",
   "author": "ribeirogab <ribeirogabx@gmail.com>",
   "license": "MIT",
   "description": "",
-  "keywords": ["translate", "free translate", "translator", "free translator"],
+  "keywords": [
+    "translate",
+    "free translate",
+    "translator",
+    "free translator",
+    "google translate"
+  ],
   "scripts": {
     "build": "tsc"
   },
   "devDependencies": {
-    "@types/node": "^14.14.31",
-    "@types/puppeteer": "^5.4.3",
+    "@types/nightmare": "^2.10.4",
     "@typescript-eslint/eslint-plugin": "^2.28.0",
     "@typescript-eslint/parser": "^2.28.0",
     "eslint": "^6.8.0",
@@ -27,7 +32,6 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "events": "^3.3.0",
-    "puppeteer": "7.1.0"
+    "nightmare": "^3.0.2"
   }
 }

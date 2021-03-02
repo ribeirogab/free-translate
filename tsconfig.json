@@ -2,12 +2,12 @@
   "compilerOptions": {
     "module": "commonjs",
     "noImplicitAny": false,
-    "sourceMap": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "declaration": true,
     "target": "es5",
     "lib": ["es2015", "dom"],
+    "rootDir": "./lib",
     "outDir": "./dist",
     "noUnusedLocals": true,
     "noImplicitReturns": true,
@@ -16,9 +16,5 @@
     "pretty": true,
     "noFallthroughCasesInSwitch": true,
     "allowUnreachableCode": false
-  },
-  "include": [
-    "lib",
-    "puppeteer.d.ts"
-  ]
+  }
 }

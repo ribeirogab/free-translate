@@ -1,4 +1,4 @@
-import * as puppeteer from 'puppeteer';
+import * as Nightmare from 'nightmare';
 
 import { Language } from './types/Language';
 
@@ -11,36 +11,21 @@ export async function translate(
   text: string,
   languages: Translate,
 ): Promise<string> {
-  const browser = await puppeteer.launch();
+  const nightmare = new Nightmare({ ignoreDownloads: true });
   const { from, to } = languages;
+  const url = `https://translate.google.com/?sl=${from}&text=${text}&tl=${to}`;
 
   try {
-    const page = await browser.newPage();
+    const translatedText = await nightmare
+      .goto(url)
+      .wait('span[jsname=W297wb]')
+      .evaluate(() => document.querySelector('span[jsname=W297wb]').textContent)
+      .end();
 
-    let translatedText = null;
-    let waitingTime = 1000;
+    if (!translatedText) throw new Error('Unable to translate.');
 
-    while (!translatedText) {
-      await page.goto(
-        `https://translate.google.com/?sl=${from}&text=${text}&tl=${to}`,
-      );
-
-      await page.waitForTimeout(waitingTime);
-
-      translatedText = await page.evaluate(
-        () => document?.querySelector('span[jsname=W297wb]')?.innerHTML,
-      );
-
-      waitingTime += 1000;
-
-      if (waitingTime >= 15000) throw new Error('Timeout!');
-    }
-
-    await browser.close();
-
-    return translatedText;
+    return translatedText.toString();
   } catch (error) {
-    await browser.close();
     throw new Error(error);
   }
 }

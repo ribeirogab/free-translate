@@ -1,7 +1,6 @@
 .git
 .vscode
 tests
-examples
 
 .editorconfig
 .eslintignore
