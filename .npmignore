@@ -9,3 +9,4 @@ test.*
 .gitignore
 prettier.config.js
 tsconfig.json
+.DS_Store
