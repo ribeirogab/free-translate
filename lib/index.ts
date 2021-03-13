@@ -44,8 +44,14 @@ async function translator(
 
     const translatedText = await nightmare
       .goto(url)
-      .wait('span[jsname=W297wb]')
-      .evaluate(() => document.querySelector('span[jsname=W297wb]').textContent)
+      .wait('span[jsname=jqKxS]')
+      .wait(500)
+      .evaluate(
+        () =>
+          ((document.querySelector(
+            'span[jsname=jqKxS]',
+          ) as unknown) as HTMLElement).innerText,
+      )
       .end();
 
     if (!translatedText) throw new Error('Unable to translate.');
