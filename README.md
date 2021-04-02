@@ -1,5 +1,5 @@
 <h1 align="center">
-<img src="https://i.ibb.co/T0myfBQ/logo.png" alt="free translate" width="250"/>
+<img src="https://ibb.co/wwWXmjK" alt="free translate" width="250"/>
 </h1>
 
 
