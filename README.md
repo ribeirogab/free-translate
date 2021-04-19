@@ -30,9 +30,9 @@ const { translate } = require('free-translate');
 // import { translate } from 'free-translate';
 
 (async () => {
-  const translatedText = await translate('Olá Mundo', { from: 'pt', to: 'en' });
+  const translatedText = await translate('Hello World', { from: 'en', to: 'ja' }); // English to Japanese
 
-  console.log(translatedText); // Hello World
+  console.log(translatedText); // こんにちは世界 
 })();
 ```
 
