@@ -1,6 +1,8 @@
-export type Language =
+export type Locale =
+  | 'auto'
   | 'en'
   | 'pt'
+  | 'pt-BR'
   | 'af'
   | 'sq'
   | 'am'
