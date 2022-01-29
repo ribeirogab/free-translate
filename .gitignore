@@ -5,3 +5,4 @@ tests
 test.*
 
 .DS_Store
+yarn.lock
