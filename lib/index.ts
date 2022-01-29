@@ -1,16 +1,22 @@
 import * as Nightmare from 'nightmare';
 
-import { Language } from './types/Language';
+import { Locale } from './types/locales';
+import { normalizer } from './normalizer';
 
 export interface Translate {
-  from: Language;
-  to: Language;
+  from?: Locale;
+  to: Locale;
 }
 
 function indexToBreak(txt: string, index: number): number {
-  if (txt[index] === ' ') return index;
+  if (txt[index] === ' ') {
+    return index;
+  }
 
-  if (index === 0) return index;
+  if (index === 0) {
+    return index;
+  }
+
   return indexToBreak(txt, index - 1);
 }
 
@@ -24,6 +30,7 @@ function breakText(txt: string, array: string[], limit: number): string[] {
   if (rest.length > limit) {
     return breakText(rest.trim(), array, limit);
   }
+
   array.push(rest);
   return array;
 }
@@ -38,9 +45,8 @@ async function translator(
       ignoreDownloads: true,
       waitTimeout: 60000,
     });
-    const url = `https://translate.google.com/?sl=${
-      from || 'auto'
-    }&text=${text}&tl=${to}`;
+
+    const url = `https://translate.google.com/?sl=${from}&text=${text}&tl=${to}&op=translate`;
 
     const translatedText = await nightmare
       .goto(url)
@@ -48,13 +54,14 @@ async function translator(
       .wait(500)
       .evaluate(
         () =>
-          ((document.querySelector(
-            'span[jsname=jqKxS]',
-          ) as unknown) as HTMLElement).innerText,
+          (document.querySelector('span[jsname=jqKxS]') as HTMLElement)
+            .innerText,
       )
       .end();
 
-    if (!translatedText) throw new Error('Unable to translate.');
+    if (!translatedText) {
+      throw new Error('Unable to translate.');
+    }
 
     return translatedText.toString();
   } catch (error) {
@@ -68,7 +75,8 @@ export async function translate(
   text: string,
   languages: Translate,
 ): Promise<string> {
-  const { from, to } = languages;
+  const from = normalizer(languages?.from || 'auto');
+  const to = normalizer(languages.to);
 
   if (text.length > GOOGLE_TRANSLATE_CHARACTER_LIMIT) {
     const textArr = breakText(text, [], GOOGLE_TRANSLATE_CHARACTER_LIMIT);
@@ -81,5 +89,6 @@ export async function translate(
   }
 
   const translatedText = await translator(from, to, text);
+
   return translatedText;
 }
