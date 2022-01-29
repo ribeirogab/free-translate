@@ -3,77 +3,44 @@
 </h1>
 
 
-# A free and unlimited translate for Node.js
+# A free and unlimited translator for Node.js
 
-> 🈂️ ⠀free text translator in Node.js.
+> 🈂️ ⠀free text translator for Node.js.
 
-## Getting Started
+## **Install**
 
-### Installation
-
-if you use npm
+To install free-translate, you can use NPM:
 
 ```zsh
 npm install free-translate
 ```
 
-if you use yarn
-
-```zsh
-yarn add free-translate
-```
-
-### Example
+## **Quick examples**
 
 ```js
 const { translate } = require('free-translate');
-// import { translate } from 'free-translate';
 
 (async () => {
-  const translatedText = await translate('Olá Mundo', { from: 'pt', to: 'en' });
+  const translatedText = await translate('Hello World', { from: 'en', to: 'ja' });
 
-  console.log(translatedText); // Hello World
+  console.log(translatedText); // こんにちは世界
 })();
 ```
 
-## Contributing
+### **Automatic language recognition**
 
-> To get started...
+If the language informed in the `from` is dynamic, just do not send it and the translator will automatically recognize it:
 
-### Step 1
+```js
+const { translate } = require('free-translate');
 
-- **Option 1**
-  - 🍴  Fork this repo!
+(async () => {
+  const translatedText = await translate('This is cool!', { to: 'ja' });
 
-- **Option 2**
-  - 👯  Clone this repo to your local machine using `git clone https://github.com/ribeirogab/free-translate.git`
+  console.log(translatedText); // これはカッコいい！
+})();
+```
 
-### Step 2
-
-- **HACK AWAY!** 🔨🔨🔨
-
-### Step 3
-
-- 🔃  Create a new pull request using <a href="https://github.com/ribeirogab/free-translate/compare/" target="_blank">`https://github.com/ribeirogab/free-translate/compare/`</a>.
-
----
-
-## Contributors
-
-| <img width="115"> | <img width="115"> | <img width="115"> | <img width="115"> | <img width="115"> | <img width="115"> |
-|:-:|:-:|:-:|:-:|:-:|:-:|
-
-## Author
-
-| [<img src="https://avatars3.githubusercontent.com/u/44847326?s=400&u=30a156f0a61f81eaa137cb286ed13e9527916039&v=4" width="115"><br><sub>@ribeirogab</sub>](https://github.com/ribeirogab) |
-| :---: |
-
----
-
-## FAQ
-
-- **How do I do *specifically* so and so?**
-    - No problem! Just do this.
 
 ---
 
