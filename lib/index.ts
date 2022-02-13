@@ -47,9 +47,17 @@ async function translator(
     });
 
     const url = `https://translate.google.com/?sl=${from}&text=${text}&tl=${to}&op=translate`;
-
     const translatedText = await nightmare
       .goto(url)
+      .evaluate(() => {
+        // click ok on google consent
+        const button = document.querySelector(
+          'form[action="https://consent.google.com/s"] button',
+        ) as HTMLElement;
+        if (button) {
+          button.click();
+        }
+      })
       .wait('span[jsname=jqKxS]')
       .wait(500)
       .evaluate(
@@ -88,7 +96,7 @@ export async function translate(
     return translatedText;
   }
 
-  const translatedText = await translator(from, to, text);
+  const translatedText = await translator(from, to, encodeURIComponent(text));
 
   return translatedText;
 }

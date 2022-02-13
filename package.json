@@ -15,7 +15,8 @@
     "google translate"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "watch": "tsc --watch"
   },
   "dependencies": {
     "nightmare": "^3.0.2"
