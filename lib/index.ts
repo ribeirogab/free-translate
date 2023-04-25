@@ -9,11 +9,7 @@ export interface Translate {
 }
 
 function indexToBreak(txt: string, index: number): number {
-  if (txt[index] === ' ') {
-    return index;
-  }
-
-  if (index === 0) {
+  if (txt[index] === ' ' || index === 0) {
     return index;
   }
 
